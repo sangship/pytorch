@@ -1,0 +1,68 @@
+https://blog.naver.com/lovemema/223375784627
+
+GPU를 활용한 딥러닝 환경 구축
+[출처] Windows 11에 GPU를 활용한 딥러닝 환경
+
+=====================================
+
+작업 가상환경 만들기
+(base) C:\Users\SBA>conda create -n pytorch python=3.10
+나는 내 윈도우 사용자 폴더(work_pytorch)에 작업폴더하나 만듦 --> C:\Users\SBA\work_pytorch
+
+
+step1 NVIDIA 그래픽 드라이버 설치 확인. (설치되어 있으면 안해도 됨)
+윈도우 명령창을 하나 열고 다음과 같이 입력합니다.
+nvidia-smi
+
+
+step2 PyTorch 설치 버전 확인
+https://pytorch.org/get-started/locally/ 에서
+Stable (2.4.1), Windows, Conda, Python, CUDA 12.4 
+를 선택하면
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+를 확인만 하고 "설치하지는 않는다".!!!!!
+
+
+
+step3 CUDA 설치 (12.4)  --> cuda_12.4.0_551.61_windows.exe
+https://developer.nvidia.com/cuda-12-4-0-download-archive?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local 다운로드 및 설치
+
+다음 폴더 확인한다.
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4
+
+CUDA의 설치된 버전을 확인해 보려면 윈도우 명령창에서 아래 명령으로 버전을 확인해봅니다.
+> nvcc --version
+
+
+
+
+step4 cuDNN 설치 --> cudnn-windows-x86_64-8.9.7.29_cuda12-archive.zip
+압축파일을 풀고,
+"4개 파일과 폴더(bin폴더, include폴더, lib폴더, LICENSE파일 "를 복사하여
+CUDA가 설치된 
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4
+폴더 아래에 붙여넣기 합니다.
+동일한 폴더 이름이 있어더라도 파일이 다르므로 덮어쓰면 됩니다.
+
+
+
+
+step5 PyTorch 설치하기
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+
+Results saved to runs\detect\predict 생성되었는지 확인한다.
+
+
+
+
+
+
+=========================================================================
+Yolo설치 (https://github.com/ultralytics/ultralytics 참조)
+
+(pytorch) C:\Users\SBA>pip install ultralytics
+
+
+제대로 설치 되었는지 확인
+(pytorch) C:\Users\SBA>yolo predict model=yolov8n.pt source='https://ultralytics.com/images/bus.jpg'
+
