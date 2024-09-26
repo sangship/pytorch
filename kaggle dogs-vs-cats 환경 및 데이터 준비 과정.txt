@@ -1,0 +1,42 @@
+
+https://www.kaggle.com/c/dogs-vs-cats 환경 및 데이터 준비 과정
+
+
+
+kaggle에서 로그인하고, setting에 가서
+	Phone verification하고
+	API token 생성(Create New Token)해서 kaggle.jason파일을 다운로드 받는다.
+
+[windows환경에서는]
+
+c:/users/sba/.kaggle/ 폴더를 만들고 여기에 kaggle.jason파일을 옮긴다.
+
+
+https://www.kaggle.com/c/dogs-vs-cats/data에 가서
+join the competition을 누르고 데이터 사용에 동의한다.
+
+
+anaconda가상환경으로 (새싹 데스크탑에서는 "(pytorch) C:\Users\SBA\work_pytorch>") 이동해서
+
+pip install kaggle 실행
+
+kaggle competitions download -c dogs-vs-cats 실행.
+
+
+[Colab환경에서는]
+# /root/.kaggle 폴더를 만든다.
+# /content/ 폴더에 kaggle.jason을 업로드
+
+# /root/.kaggle 폴더에 kaggle.jason파일을 복사한다.
+!mkdir -p /root.kaggle 실행
+!cp kaggle.json /root/.kaggle/kaggle.json 실행
+
+
+# kaggle에 로그인하고, https://www.kaggle.com/c/dogs-vs-cats/data#  이동해서 
+# join the competition을 누르고 데이터 사용에 동의한다.
+
+
+# 동의한 후, 아래 다운로드를 진행한다.
+!kaggle competitions download -c dogs-vs-cats
+
+
